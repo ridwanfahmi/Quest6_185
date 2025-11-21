@@ -1,5 +1,6 @@
 package com.example.myarsitekturmvvm.model
 
-class Siswa {
-    val nama : String = ""
-}
+data class Siswa(
+    val nama : String ="",
+
+)
