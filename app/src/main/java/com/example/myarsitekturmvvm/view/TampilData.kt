@@ -24,16 +24,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myarsitekturmvvm.R
+import com.example.myarsitekturmvvm.model.Siswa
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TampilData(
-    onBackBtnClick: () -> Unit,
+fun TampilSiswa(
+    // parameter statusDiSiswa
+    statusUiSiswa: Siswa,
+    onBackButtonClicked: () -> Unit,
 ){
     val items = listOf(
-        Pair(stringResource(id = R.string.nama_lengkap), "Contoh Nama"),
-        Pair(stringResource(id = R.string.jenis_kelamin), "Lainnya"),
-        Pair(stringResource(id = R.string.alamat), "Yogyakarta")
+        Pair(stringResource(id = R.string.nama_lengkap), statusUiSiswa.nama),
+        Pair(stringResource(id = R.string.jenis_kelamin), statusUiSiswa.gender),
+        Pair(stringResource(id = R.string.alamat), statusUiSiswa.alamat)
     )
     Scaffold(
         topBar = {
@@ -76,7 +79,7 @@ fun TampilData(
 
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = onBackBtnClick
+                onClick = onBackButtonClicked
             ) {
                 Text(text = stringResource(id = R.string.back))
             }
