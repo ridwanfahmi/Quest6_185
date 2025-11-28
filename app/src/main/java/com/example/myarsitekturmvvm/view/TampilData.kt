@@ -28,32 +28,34 @@ import com.example.myarsitekturmvvm.model.Siswa
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TampilSiswa(
-    // parameter statusDiSiswa
+fun TampilData(
     statusUiSiswa: Siswa,
-    onBackButtonClicked: () -> Unit,
-){
+    onBackBtnClick: () -> Unit
+) {
     val items = listOf(
-        Pair(stringResource(id = R.string.nama_lengkap), statusUiSiswa.nama),
-        Pair(stringResource(id = R.string.jenis_kelamin), statusUiSiswa.gender),
-        Pair(stringResource(id = R.string.alamat), statusUiSiswa.alamat)
+        Pair(first = stringResource(id = R.string.nama_lengkap), second = statusUiSiswa.nama),
+        Pair(first = stringResource(id = R.string.jenis_kelamin), second = statusUiSiswa.gender),
+        Pair(first = stringResource(id = R.string.alamat), second = statusUiSiswa.alamat)
     )
+
     Scaffold(
-        topBar = {
+        modifier = Modifier,
+        {
             TopAppBar(
                 title = { Text(text = stringResource(id = R.string.tampil), color = Color.White) },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    containerColor = colorResource(id = R.color.teal_700)
+                    colorResource(id = R.color.teal_700)
                 )
             )
         }
     ) { isiRuang ->
+
         Column(
             modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             Column(
-                modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_medium)),
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
                 verticalArrangement = Arrangement.spacedBy(
                     dimensionResource(id = R.dimen.padding_small)
                 )
@@ -79,7 +81,7 @@ fun TampilSiswa(
 
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = onBackButtonClicked
+                onClick = onBackBtnClick
             ) {
                 Text(text = stringResource(id = R.string.back))
             }
